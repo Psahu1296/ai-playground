@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+/* Base Customizations */
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Dynamic values defined by React active tab */
+  --theme-accent-color: 249, 115, 22; /* Default: Orange (Dhaba AI) */
+  --theme-accent-hex: #f97316;
+  --theme-glow-1: rgba(249, 115, 22, 0.08);
+  --theme-glow-2: rgba(217, 119, 6, 0.04);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #030303;
+  color: #f4f4f5;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium Dark Grid Backdrop */
+.dark-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.007) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center center;
+  mask-image: radial-gradient(circle 800px at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 800px at center, black 40%, transparent 100%);
+  z-index: 0;
+}
+
+/* Ambient Floating Glow Circles */
+.ambient-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.35;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 0;
+}
+
+/* Clean Custom Scrollbar with Active Theme Matching */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--theme-accent-color), 0.15);
+  border-radius: 9999px;
+  border: 1px solid rgba(var(--theme-accent-color), 0.05);
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--theme-accent-color), 0.35);
+}
+
+/* Phones: keep scrolling, hide the visual scrollbar entirely */
+@media (max-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  * {
+    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;  /* legacy Edge/IE */
+  }
+}
+
+/* Custom Glassmorphism Cards */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(var(--theme-accent-color), 0.15);
+  box-shadow: 0 8px 32px 0 rgba(var(--theme-accent-color), 0.03);
+}
+
+/* Chat Input Styling */
+.glow-input:focus-within {
+  box-shadow: 0 0 20px rgba(var(--theme-accent-color), 0.08);
+}
+
+/* Active Highlight Glow Ring for Buttons */
+.active-ring:focus-visible {
+  outline: 2px solid rgb(var(--theme-accent-color));
+  outline-offset: 2px;
+}
+
+/* Sleek pulsing glow dot */
+.pulse-glow {
+  box-shadow: 0 0 8px rgb(var(--theme-accent-color));
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: .6;
+    transform: scale(1.1);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   IGRIS — "The Shadow Monarch's Command Throne"
+   A void-black regal-military HUD. Shadow-violet glow + icy-cyan telemetry.
+   Fonts: Cinzel (engraved/regal display) + Chakra Petch (angular HUD body).
+   ════════════════════════════════════════════════════════════════════════════ */
+:root {
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-hud: 'Chakra Petch', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ig-violet: 139, 92, 246;   /* primary */
+  --ig-violet-bright: 167, 139, 250;
+  --ig-cyan: 34, 211, 238;     /* data / telemetry */
+  --ig-void: #060509;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-hud { font-family: var(--font-hud); }
+.font-monoj { font-family: var(--font-mono); }
+
+/* The throne backdrop — deep violet vignette over the void */
+.igris-stage {
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(139, 92, 246, 0.10), transparent 55%),
+    radial-gradient(80% 60% at 50% 120%, rgba(34, 211, 238, 0.05), transparent 60%),
+    var(--ig-void);
+}
+
+/* Faint horizontal scanlines for HUD texture */
+.igris-scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.013) 0px,
+    rgba(255, 255, 255, 0.013) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Letter-spaced HUD labels */
+.hud-label {
+  font-family: var(--font-hud);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Corner-bracket frame for panels */
+.hud-frame {
+  position: relative;
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  background: rgba(12, 10, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.hud-frame::before,
+.hud-frame::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(var(--ig-violet-bright), 0.55);
+}
+.hud-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.hud-frame::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+/* The reactive core glow — driven by a CSS var the React component sets */
+.igris-core-glow {
+  filter: drop-shadow(0 0 14px rgba(var(--core-rgb, var(--ig-violet)), 0.55))
+          drop-shadow(0 0 42px rgba(var(--core-rgb, var(--ig-violet)), 0.30));
+  transition: filter 0.6s ease;
+}
+
+@keyframes ig-spin       { to { transform: rotate(360deg); } }
+@keyframes ig-spin-rev   { to { transform: rotate(-360deg); } }
+@keyframes ig-breathe    { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+
+.ig-spin-slow  { animation: ig-spin 26s linear infinite; transform-origin: center; }
+.ig-spin-med   { animation: ig-spin-rev 14s linear infinite; transform-origin: center; }
+.ig-breathe    { animation: ig-breathe 4.5s ease-in-out infinite; }
+
+/* Equalizer bar for the "speaking" state */
+@keyframes ig-eq { 0%,100% { transform: scaleY(0.3); } 50% { transform: scaleY(1); } }
+.ig-eq-bar { transform-origin: bottom center; animation: ig-eq 0.9s ease-in-out infinite; }
+
+/* Animated dispatch entrance */
+@keyframes ig-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
