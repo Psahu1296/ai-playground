@@ -170,7 +170,7 @@ export function AdminPanel({ onClose }: Props) {
         ) : (
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 text-zinc-200 font-semibold text-sm">
-              <KeyRound className="w-4 h-4 text-violet-400" />
+              <KeyRound className="w-4 h-4 text-tungsten-400" />
               Demo credentials
             </div>
 
@@ -194,7 +194,7 @@ export function AdminPanel({ onClose }: Props) {
                 <button
                   onClick={handleGenerate}
                   disabled={busy}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-violet-500/10 border border-violet-500/20 hover:bg-violet-500/20 text-violet-300 text-xs font-semibold disabled:opacity-40 cursor-pointer"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-tungsten-500/10 border border-tungsten-500/20 hover:bg-tungsten-500/20 text-tungsten-300 text-xs font-semibold disabled:opacity-40 cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   Generate

@@ -19,7 +19,7 @@ const STATUS_COLOR: Record<IgrisStatus, string> = {
 // ── small on-brand sigil glyph for Igris messages ───────────────────────────
 function Sigil({ size = 16 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 24 24" width={size} height={size} className="text-violet-300">
+    <svg viewBox="0 0 24 24" width={size} height={size} className="text-tungsten-300">
       <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)"
         fill="none" stroke="currentColor" strokeWidth="1.5" />
       <circle cx="12" cy="12" r="2.4" fill="currentColor" />
@@ -48,20 +48,20 @@ function Dispatch({ role, content }: { role: 'user' | 'assistant'; content: stri
         className={`mt-0.5 w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border ${
           isUser
             ? 'bg-white/[0.03] border-white/10 text-zinc-400'
-            : 'bg-violet-500/10 border-violet-500/25 shadow-[0_0_14px_-4px_rgba(139,92,246,0.6)]'
+            : 'bg-tungsten-500/10 border-tungsten-500/25 shadow-[0_0_14px_-4px_rgba(255,179,56,0.6)]'
         }`}
       >
         {isUser ? <User className="w-4 h-4" /> : <Sigil />}
       </div>
       <div className={`max-w-[82%] ${isUser ? 'text-right' : ''}`}>
-        <div className={`hud-label text-[9px] mb-1 ${isUser ? 'text-zinc-600' : 'text-violet-400/70'}`}>
+        <div className={`hud-label text-[9px] mb-1 ${isUser ? 'text-zinc-600' : 'text-tungsten-400/70'}`}>
           {isUser ? 'MY LIEGE' : 'IGRIS'}
         </div>
         <div
           className={`px-4 py-2.5 rounded-xl text-[13.5px] leading-relaxed font-hud ${
             isUser
               ? 'bg-white/[0.04] border border-white/[0.06] text-zinc-200 rounded-tr-sm inline-block text-left'
-              : 'bg-violet-500/[0.05] border border-violet-500/15 text-zinc-200 rounded-tl-sm'
+              : 'bg-tungsten-500/[0.05] border border-tungsten-500/15 text-zinc-200 rounded-tl-sm'
           }`}
         >
           {isUser ? content : <MarkdownRenderer content={content} />}
@@ -76,12 +76,12 @@ function Operations({ tasks, status, session }: { tasks: IgrisTask[]; status: Ig
   return (
     <div className="hud-frame rounded-xl p-4 h-full flex flex-col gap-3 min-h-0">
       <div className="flex items-center gap-2">
-        <Activity className="w-3.5 h-3.5 text-violet-400" />
-        <span className="hud-label text-[10px] text-violet-300">Operations</span>
+        <Activity className="w-3.5 h-3.5 text-tungsten-400" />
+        <span className="hud-label text-[10px] text-tungsten-300">Operations</span>
         <span className="ml-auto flex items-center gap-1.5">
           <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-60" />
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-400" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tungsten-400 opacity-60" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-tungsten-400" />
           </span>
           <span className="font-monoj text-[9px] text-zinc-500 uppercase">{status}</span>
         </span>
@@ -209,7 +209,7 @@ export function Igris() {
                   title={voiceOutput ? 'Mute Igris' : 'Let Igris speak'}
                   className={`p-2 rounded-lg border transition-colors cursor-pointer ${
                     voiceOutput
-                      ? 'border-violet-500/30 bg-violet-500/10 text-violet-300'
+                      ? 'border-tungsten-500/30 bg-tungsten-500/10 text-tungsten-300'
                       : 'border-white/[0.06] text-zinc-500 hover:text-zinc-300'
                   }`}
                 >
@@ -245,7 +245,7 @@ export function Igris() {
                   <h1 className="font-display text-4xl sm:text-5xl font-black tracking-[0.34em] text-zinc-100 pl-[0.34em]">
                     IGRIS
                   </h1>
-                  <p className="font-hud text-[13px] text-violet-300/70 tracking-wide">
+                  <p className="font-hud text-[13px] text-tungsten-300/70 tracking-wide">
                     First Knight of the Shadow Monarch
                   </p>
                   <p className="font-hud text-xs text-zinc-500 max-w-sm mx-auto leading-relaxed mt-1">
@@ -264,16 +264,16 @@ export function Igris() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 + i * 0.07 }}
-                        className="group text-left p-3.5 rounded-xl border border-violet-500/10 bg-violet-500/[0.02] hover:bg-violet-500/[0.06] hover:border-violet-500/25 transition-all cursor-pointer flex items-center gap-3"
+                        className="group text-left p-3.5 rounded-xl border border-tungsten-500/10 bg-tungsten-500/[0.02] hover:bg-tungsten-500/[0.06] hover:border-tungsten-500/25 transition-all cursor-pointer flex items-center gap-3"
                       >
-                        <div className="w-9 h-9 rounded-lg bg-violet-500/10 border border-violet-500/15 flex items-center justify-center text-violet-300 shrink-0 group-hover:scale-110 transition-transform">
+                        <div className="w-9 h-9 rounded-lg bg-tungsten-500/10 border border-tungsten-500/15 flex items-center justify-center text-tungsten-300 shrink-0 group-hover:scale-110 transition-transform">
                           <Icon className="w-4 h-4" />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="font-hud text-[13px] text-zinc-200 leading-snug">{d.text}</div>
                           <div className="font-monoj text-[10px] text-zinc-600 mt-0.5">{d.sub}</div>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-zinc-700 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                        <ArrowRight className="w-4 h-4 text-zinc-700 group-hover:text-tungsten-400 group-hover:translate-x-0.5 transition-all shrink-0" />
                       </motion.button>
                     )
                   })}
@@ -290,12 +290,12 @@ export function Igris() {
                     animate={{ opacity: 1 }}
                     className="flex items-center gap-3 pl-11"
                   >
-                    <span className="font-hud text-xs text-violet-300/80 tracking-wide">Igris is deliberating</span>
+                    <span className="font-hud text-xs text-tungsten-300/80 tracking-wide">Igris is deliberating</span>
                     <div className="flex gap-1">
                       {[0, 1, 2].map((i) => (
                         <motion.span
                           key={i}
-                          className="w-1 h-1 rounded-full bg-violet-400"
+                          className="w-1 h-1 rounded-full bg-tungsten-400"
                           animate={{ opacity: [0.3, 1, 0.3] }}
                           transition={{ repeat: Infinity, duration: 1.1, delay: i * 0.18 }}
                         />
@@ -348,8 +348,8 @@ export function Igris() {
                 status === 'listening'
                   ? 'bg-cyan-500/15 border-cyan-400/40 text-cyan-300'
                   : transcribing
-                    ? 'bg-violet-500/10 border-violet-500/25 text-violet-300'
-                    : 'bg-violet-500/5 border-violet-500/15 text-violet-300/80 hover:bg-violet-500/10'
+                    ? 'bg-tungsten-500/10 border-tungsten-500/25 text-tungsten-300'
+                    : 'bg-tungsten-500/5 border-tungsten-500/15 text-tungsten-300/80 hover:bg-tungsten-500/10'
               }`}
             >
               {transcribing
@@ -373,9 +373,9 @@ export function Igris() {
                 <motion.div
                   key="busy"
                   initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
-                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 bg-violet-500/10 border border-violet-500/25"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 bg-tungsten-500/10 border border-tungsten-500/25"
                 >
-                  <Square className="w-3.5 h-3.5 fill-violet-400 text-violet-400 animate-pulse" />
+                  <Square className="w-3.5 h-3.5 fill-tungsten-400 text-tungsten-400 animate-pulse" />
                 </motion.div>
               ) : (
                 <motion.button
@@ -383,7 +383,7 @@ export function Igris() {
                   onClick={() => handleSend(input)}
                   disabled={!input.trim()}
                   initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
-                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 bg-violet-500/15 border border-violet-500/30 text-violet-200 hover:bg-violet-500/25 disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer transition-all"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 bg-tungsten-500/15 border border-tungsten-500/30 text-tungsten-200 hover:bg-tungsten-500/25 disabled:opacity-25 disabled:cursor-not-allowed cursor-pointer transition-all"
                 >
                   <Send className="w-4.5 h-4.5" />
                 </motion.button>

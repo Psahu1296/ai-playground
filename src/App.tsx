@@ -11,7 +11,7 @@ import { IgrisIcon } from './components/IgrisIcon'
 import { useAuth } from './hooks/useAuth'
 
 const TABS = [
-  { id: 'igris', label: 'Igris', icon: Crown, colorRgb: '139, 92, 246', colorHex: '#8b5cf6' },
+  { id: 'igris', label: 'Igris', icon: Crown, colorRgb: '255, 179, 56', colorHex: '#FFB338' },
   { id: 'dhaba', label: 'Dhaba AI', icon: ChefHat, colorRgb: '249, 115, 22', colorHex: '#f97316' },
   { id: 'research', label: 'Research Agent', icon: Microscope, colorRgb: '59, 130, 246', colorHex: '#3b82f6' },
   { id: 'prep', label: 'Prep', icon: GraduationCap, colorRgb: '16, 185, 129', colorHex: '#10b981' },
@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <div
-      className="flex flex-col h-svh bg-[#030303] text-zinc-100 overflow-hidden relative"
+      className="flex flex-col h-svh bg-[#09080E] text-zinc-100 overflow-hidden relative"
       style={{
         '--theme-accent-color': rgb,
         '--theme-accent-hex': currentTab.colorHex,
@@ -81,8 +81,8 @@ export default function App() {
             <div className="flex items-center gap-3 shrink-0">
               <IgrisIcon className="w-9 h-9" />
               <div className="hidden sm:flex flex-col">
-                <span className="text-sm font-extrabold text-zinc-100 tracking-wider font-['Cinzel'] leading-none">IGRIS AI</span>
-                <span className="text-[10px] text-red-500/80 font-semibold tracking-widest mt-1 uppercase font-['Chakra_Petch']">Personal Agent</span>
+                <span className="text-lg text-[#F5F2EC] font-display font-medium leading-none">Igris</span>
+                <span className="text-[10px] text-tungsten-400/80 font-medium tracking-widest mt-1 uppercase">Personal Agent</span>
               </div>
             </div>
 
@@ -137,7 +137,7 @@ export default function App() {
                   <button
                     onClick={() => setShowAdmin(true)}
                     title="Demo access admin"
-                    className="p-2 rounded-lg text-zinc-600 hover:text-violet-400 hover:bg-violet-500/10 transition-all cursor-pointer"
+                    className="p-2 rounded-lg text-zinc-600 hover:text-tungsten-400 hover:bg-tungsten-500/10 transition-all cursor-pointer"
                   >
                     <ShieldCheck className="w-3.5 h-3.5" />
                   </button>

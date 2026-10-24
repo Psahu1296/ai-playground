@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { motion } from 'framer-motion'
 import type { IgrisStatus } from '../store/useIgrisStore'
+import { IgrisMark } from './IgrisIcon'
 
 // The reactive heart of Igris — a Shadow-Monarch sigil that breathes, spins and
 // pulses according to state. Glow colour + animation speed are driven by status.
@@ -170,15 +171,15 @@ export function IgrisCore({ status, size = 320 }: { status: IgrisStatus; size?: 
           style={{ transformOrigin: '100px 100px' }}
         />
 
-        {/* Center High-Res Igris Emblem Image */}
-        <foreignObject x="62" y="62" width="76" height="76">
-          <motion.img
-            src="/igris-logo.png"
-            alt="Igris"
-            className="w-full h-full rounded-full object-cover drop-shadow-[0_0_12px_rgba(239,68,68,0.7)] border border-red-500/40"
+        {/* The Igris mark at the centre (same SVG as igris-app's icon) */}
+        <foreignObject x="66" y="62" width="68" height="76">
+          <motion.div
+            className="w-full h-full drop-shadow-[0_0_12px_rgba(255,179,56,0.55)]"
             animate={{ scale: speaking ? [0.95, 1.05, 0.95] : [0.98, 1.02, 0.98] }}
             transition={{ duration: c.pulse, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          >
+            <IgrisMark />
+          </motion.div>
         </foreignObject>
       </svg>
     </div>

@@ -20,16 +20,16 @@ export function LoginPage({ onLogin, error, isLoading }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-svh bg-[#030303] relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center h-svh bg-[#09080E] relative overflow-hidden">
       {/* Grid backdrop */}
       <div className="dark-grid" />
 
       {/* Ambient glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-15%] left-[20%] w-[500px] h-[500px] rounded-full blur-[160px]"
-          style={{ background: 'radial-gradient(circle, rgba(239,68,68,0.15) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(255,179,56,0.12) 0%, transparent 70%)' }} />
         <div className="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] rounded-full blur-[140px]"
-          style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%)' }} />
       </div>
 
       <motion.div
@@ -47,9 +47,9 @@ export function LoginPage({ onLogin, error, isLoading }: Props) {
             <IgrisIcon className="w-20 h-20" size={80} />
           </motion.div>
           <div className="text-center">
-            <h1 className="font-extrabold text-3xl text-white tracking-widest font-['Cinzel']">IGRIS AI</h1>
-            <p className="text-red-400/90 text-[11px] font-bold tracking-[0.25em] uppercase mt-1.5 font-['Chakra_Petch']">
-              Personal Agent • Shadow Command Hub
+            <h1 className="text-4xl text-[#F5F2EC] font-display font-medium">Igris</h1>
+            <p className="text-tungsten-400/90 text-[11px] font-medium tracking-[0.25em] uppercase mt-1.5">
+              Personal Agent
             </p>
           </div>
         </div>
