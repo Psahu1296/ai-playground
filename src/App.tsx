@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChefHat, Microscope, LogOut, Crown, ShieldCheck } from 'lucide-react'
+import { ChefHat, Microscope, LogOut, Crown, ShieldCheck, GraduationCap } from 'lucide-react'
 import { Igris } from './tabs/Igris'
 import { DhabaAI } from './tabs/DhabaAI'
 import { ResearchAgent } from './tabs/ResearchAgent'
+import { Prep } from './tabs/Prep'
 import { LoginPage } from './components/LoginPage'
 import { AdminPanel } from './components/AdminPanel'
 import { IgrisIcon } from './components/IgrisIcon'
@@ -13,6 +14,7 @@ const TABS = [
   { id: 'igris', label: 'Igris', icon: Crown, colorRgb: '139, 92, 246', colorHex: '#8b5cf6' },
   { id: 'dhaba', label: 'Dhaba AI', icon: ChefHat, colorRgb: '249, 115, 22', colorHex: '#f97316' },
   { id: 'research', label: 'Research Agent', icon: Microscope, colorRgb: '59, 130, 246', colorHex: '#3b82f6' },
+  { id: 'prep', label: 'Prep', icon: GraduationCap, colorRgb: '16, 185, 129', colorHex: '#10b981' },
 ] as const
 
 type TabId = (typeof TABS)[number]['id']
@@ -185,6 +187,11 @@ export default function App() {
               >
                 <ResearchAgent />
               </motion.div>
+            </div>
+
+            {/* Prep: his own interview answers and progress, owner only (maestro 404s anyone else). */}
+            <div className={`flex-1 flex flex-col min-h-0 relative ${active === 'prep' ? 'z-10' : 'hidden z-0'}`}>
+              <Prep />
             </div>
           </>
         )}
