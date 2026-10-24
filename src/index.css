@@ -209,11 +209,6 @@ body {
 .hud-frame::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
 /* The reactive core glow — driven by a CSS var the React component sets */
-.igris-core-glow {
-  filter: drop-shadow(0 0 14px rgba(var(--core-rgb, var(--ig-violet)), 0.55))
-          drop-shadow(0 0 42px rgba(var(--core-rgb, var(--ig-violet)), 0.30));
-  transition: filter 0.6s ease;
-}
 
 @keyframes ig-spin       { to { transform: rotate(360deg); } }
 @keyframes ig-spin-rev   { to { transform: rotate(-360deg); } }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { LogIn, Eye, EyeOff } from 'lucide-react'
 import { IgrisIcon } from './IgrisIcon'
+import { IgrisLoader } from './IgrisLoader'
 
 interface Props {
   onLogin: (username: string, password: string) => Promise<boolean>
@@ -103,7 +104,7 @@ export function LoginPage({ onLogin, error, isLoading }: Props) {
           >
             {isLoading ? (
               <>
-                <span className="w-4 h-4 border-2 border-zinc-500 border-t-zinc-200 rounded-full animate-spin" />
+                <IgrisLoader state="loading" size={18} />
                 <span>Signing in…</span>
               </>
             ) : (

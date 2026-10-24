@@ -5,26 +5,19 @@ import {
   Cpu, Activity, ArrowRight, Calculator, Globe, CloudSun, Wallet, Loader2,
 } from 'lucide-react'
 import { useIgrisStore, type IgrisStatus, type IgrisTask } from '../store/useIgrisStore'
-import { IgrisCore, coreLabel } from '../components/IgrisCore'
+import { IgrisCore } from '../components/IgrisCore'
+import { IgrisLoader } from '../components/IgrisLoader'
+import { CORE, coreLabel } from '../components/igrisStatus'
 import { MarkdownRenderer } from '../components/MarkdownRenderer'
 import { Listener, sttSupported } from '../lib/speech'
 
-const STATUS_COLOR: Record<IgrisStatus, string> = {
-  idle: '139,92,246',
-  listening: '34,211,238',
-  thinking: '167,139,250',
-  speaking: '139,92,246',
-}
+const STATUS_COLOR = Object.fromEntries(
+  Object.entries(CORE).map(([s, c]) => [s, c.rgb]),
+) as Record<IgrisStatus, string>
 
-// ── small on-brand sigil glyph for Igris messages ───────────────────────────
+// ── the mark beside Igris's messages: lit and still, as in igris-app's transcript ──
 function Sigil({ size = 16 }: { size?: number }) {
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} className="text-tungsten-300">
-      <rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)"
-        fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="12" cy="12" r="2.4" fill="currentColor" />
-    </svg>
-  )
+  return <IgrisLoader state="idle" size={size} />
 }
 
 const DIRECTIVES = [
@@ -198,8 +191,8 @@ export function Igris() {
             <div className="max-w-5xl mx-auto flex items-center gap-3">
               <IgrisCore status={status} size={46} />
               <div className="flex flex-col">
-                <span className="font-display text-lg font-bold tracking-[0.22em] text-zinc-100 leading-none">IGRIS</span>
-                <span className="hud-label text-[8px] mt-1" style={{ color: `rgb(${STATUS_COLOR[status]})` }}>
+                <span className="font-display text-xl font-medium text-[#F5F2EC] leading-none">Igris</span>
+                <span className="text-[11px] mt-1" style={{ color: `rgb(${STATUS_COLOR[status]})` }}>
                   {coreLabel(status)}
                 </span>
               </div>
@@ -242,8 +235,8 @@ export function Igris() {
               >
                 <IgrisCore status={status} size={300} />
                 <div className="flex flex-col gap-2 -mt-2">
-                  <h1 className="font-display text-4xl sm:text-5xl font-black tracking-[0.34em] text-zinc-100 pl-[0.34em]">
-                    IGRIS
+                  <h1 className="font-display text-5xl sm:text-6xl font-medium text-[#F5F2EC]">
+                    Igris
                   </h1>
                   <p className="font-hud text-[13px] text-tungsten-300/70 tracking-wide">
                     First Knight of the Shadow Monarch
@@ -288,19 +281,10 @@ export function Igris() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="flex items-center gap-3 pl-11"
+                    className="flex items-center gap-3 pl-2"
                   >
-                    <span className="font-hud text-xs text-tungsten-300/80 tracking-wide">Igris is deliberating</span>
-                    <div className="flex gap-1">
-                      {[0, 1, 2].map((i) => (
-                        <motion.span
-                          key={i}
-                          className="w-1 h-1 rounded-full bg-tungsten-400"
-                          animate={{ opacity: [0.3, 1, 0.3] }}
-                          transition={{ repeat: Infinity, duration: 1.1, delay: i * 0.18 }}
-                        />
-                      ))}
-                    </div>
+                    <IgrisLoader state="thinking" size={24} />
+                    <span className="font-display italic text-sm text-tungsten-300/80">Igris is thinking…</span>
                   </motion.div>
                 )}
                 <div ref={bottomRef} />
